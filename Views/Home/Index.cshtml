@@ -1,0 +1,115 @@
+﻿@model IEnumerable<AppDataPribadi.DataDB>
+
+@{
+    ViewBag.Title = "I2S Test - Arief Ageng Susilo";
+}
+
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Berhasil !</strong> @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>x</span>
+        </button>
+    </div>
+}
+
+<h2>Daftar Data Pribadi</h2>
+<hr />
+@*<div class="table-responsive">
+    <table class=" table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    asdasd
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>*@
+
+@*<div class="test">
+    asdasdasd
+</div>*@
+
+<div style="margin:auto; width:fit-content">
+    <form method="get" asp-action="Index" style="margin: 0 0 1em;">    
+        @Html.ActionLink("Tambah Data Baru", "Create", null, new { @class = "btn btn-primary" })
+        <input type="search" placeholder="Cari data berdasarkan NIK atau Nama..."
+               value="@ViewData["Getdatadetails"]" name="dataSearch" style="width: 500px;" />
+        <input type="submit" value="Cari" class="btn btn-success" style="width: 170px" /> |
+        @Html.ActionLink("Tampilkan Semua Data", "Index")    
+</form>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead style="background-color:lavender;">
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NIK)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nama_Lengkap)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Jenis_Kelamin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tanggal_Lahir)
+                </th>
+                <th class="col-xs-3 col-sm-3">
+                    @Html.DisplayNameFor(model => model.Alamat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country.CountryId)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int rowNo = 0; }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @(rowNo += 1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NIK)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nama_Lengkap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Jenis_Kelamin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tanggal_Lahir)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Alamat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country.Negara)
+                    </td>
+                    <td>
+                        <div>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.NIK }, new { @class="btn btn-primary"})
+                        
+                            @Html.ActionLink("Details", "Detail", new { id = item.NIK}, new { @class = "btn btn-success" })
+                        
+                            @Html.ActionLink("Delete", "Delete", new { id = item.NIK }, new { @class="btn btn-danger", onclick = "return confirm('Apakah kamu yakin ingin menghapus data " + item.Nama_Lengkap + " ')" })
+                        </div>                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

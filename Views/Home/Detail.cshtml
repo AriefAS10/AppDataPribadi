@@ -1,0 +1,63 @@
+﻿@model AppDataPribadi.DataDB
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail Data @Html.DisplayFor(model => model.Nama_Lengkap)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NIK)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NIK)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nama_Lengkap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nama_Lengkap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jenis_Kelamin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jenis_Kelamin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tanggal_Lahir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tanggal_Lahir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alamat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.CountryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Negara)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit Data Ini", "Edit", new { id = Model.NIK }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Kembali", "Index")
+</p>

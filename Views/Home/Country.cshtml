@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AppDataPribadi.Country>
+
+@{
+    ViewBag.Title = "Country";
+}
+
+<h2>Daftar Negara</h2>
+
+<table class="table table-bordered table-striped">
+    <thead style="background-color:lavender;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Iso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Negara)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iso3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneCode)
+            </th>
+        </tr>
+    </thead>    
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Negara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iso3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneCode)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CountryId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CountryId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CountryId }, new { @class = "btn btn-danger" })
+        </td>*@
+    </tr>
+}
+
+</table>
