@@ -1,24 +1,14 @@
 ﻿@model AppDataPribadi.DataDB
 
 @{
-    ViewBag.Title = "I2S Test - Arief Ageng Susilo";
+    ViewBag.Title = "Edit - Arief Ageng Susilo";
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/jquery.datetimepicker.js"></script>
     <script src="~/Scripts/jquery-ui-1.13.2.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.datepicker').datepicker({
-                dateFormat: 'dd-M-yy',
-                changeMonth: true,
-                changeYear: true,
-                yearRange: '-60:+60'
-
-            });
-        });
-    </script>
+    <script src="~/Scripts/Custom/DatePicker.js"></script>
 }
 
 <h2>Edit Data @Html.DisplayFor(model => model.Nama_Lengkap)</h2>
@@ -28,74 +18,74 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4></h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.NIK, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NIK, new { htmlAttributes = new { @readonly = "true", @class = "NIKedit" } })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NIK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NIK, new { htmlAttributes = new { @readonly = "true", @class = "NIKedit" } })
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nama_Lengkap, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nama_Lengkap, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Nama_Lengkap, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nama_Lengkap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nama_Lengkap, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nama_Lengkap, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Jenis_Kelamin, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.RadioButtonFor(model => model.Jenis_Kelamin, "Laki-Laki") Laki-Laki
-            @Html.RadioButtonFor(model => model.Jenis_Kelamin, "Perempuan") Perempuan
+        <div class="form-group">
+            @Html.LabelFor(model => model.Jenis_Kelamin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.Jenis_Kelamin, "Laki-Laki") Laki-Laki
+                @Html.RadioButtonFor(model => model.Jenis_Kelamin, "Perempuan") Perempuan
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Tanggal_Lahir, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(expression: model => model.Tanggal_Lahir,
-   additionalViewData: new
-   {
-       htmlattributes = new
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tanggal_Lahir, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(expression: model => model.Tanggal_Lahir,
+       additionalViewData: new
        {
-           @readonly = "true",
-           @class = "form-control datepicker"
-       }
-   })
+           htmlattributes = new
+           {
+               @readonly = "true",
+               @class = "form-control datepicker"
+           }
+       })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Alamat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Alamat, 10, 40, new { htmlAttributes = new { @class = "form-control", style = "width:100%; max-width: 100%" } })
+                @Html.ValidationMessageFor(model => model.Alamat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.DropDownListFor(model => model.CountryId, ViewBag.CountryList as SelectList, "--Pilih Negara--")
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Kembali", "Index")
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Alamat, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Alamat, 10, 40, new { htmlAttributes = new { @class = "form-control", style = "width:100%; max-width: 100%" } })
-            @Html.ValidationMessageFor(model => model.Alamat, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-lg-10">
-            @Html.DropDownListFor(model => model.CountryId, ViewBag.CountryList as SelectList, "--Pilih Negara--")
-
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-primary" />
-            @Html.ActionLink("Kembali", "Index")
-        </div>
-    </div>
-</div>
 }
 
 <div>

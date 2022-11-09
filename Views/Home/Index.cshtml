@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AppDataPribadi.DataDB>
 
 @{
-    ViewBag.Title = "I2S Test - Arief Ageng Susilo";
+    ViewBag.Title = "Index - Arief Ageng Susilo";
 }
 
 
@@ -17,21 +17,6 @@
 
 <h2>Daftar Data Pribadi</h2>
 <hr />
-@*<div class="table-responsive">
-    <table class=" table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>
-                    asdasd
-                </th>
-            </tr>
-        </thead>
-    </table>
-</div>*@
-
-@*<div class="test">
-    asdasdasd
-</div>*@
 
 <div style="margin:auto; width:fit-content">
     <form method="get" asp-action="Index" style="margin: 0 0 1em;">    
@@ -100,11 +85,11 @@
                     </td>
                     <td>
                         <div>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.NIK }, new { @class="btn btn-primary"})
+                            @Html.ActionLink("Edit", "Edit", new { id = item.NIK }, new { @class="btn btn-primary btn-xs"})
                         
-                            @Html.ActionLink("Details", "Detail", new { id = item.NIK}, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Details", "Detail", new { id = item.NIK}, new { @class = "btn btn-success btn-xs" })
                         
-                            @Html.ActionLink("Delete", "Delete", new { id = item.NIK }, new { @class="btn btn-danger", onclick = "return confirm('Apakah kamu yakin ingin menghapus data " + item.Nama_Lengkap + " ')" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.NIK }, new { @class="btn btn-danger btn-xs", onclick = "return confirm('Apakah kamu yakin ingin menghapus data " + item.Nama_Lengkap + " ')" })
                         </div>                        
                     </td>
                 </tr>

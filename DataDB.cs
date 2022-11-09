@@ -26,6 +26,7 @@ namespace AppDataPribadi
         [StringLength(16, MinimumLength = 16, ErrorMessage = "NIK harus terdiri dari 16 angka")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "NIK hanya berisi angka")]
         public string NIK { get; set; }
+
         [Required(ErrorMessage = "Mohon Isi Nama Anda")]
         [Display(Name = "Nama Lengkap")]
         public string Nama_Lengkap { get; set; }
@@ -37,9 +38,9 @@ namespace AppDataPribadi
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Tanggal_Lahir { get; set; }
 
-        [Required(ErrorMessage = "Mohon Isi Alamat Anda")]
         public string Alamat { get; set; }
         [Display(Name = "Negara")]
+
         public int CountryId { get; set; }
     
         public virtual Country Country { get; set; }

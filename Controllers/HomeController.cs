@@ -13,6 +13,7 @@ using PagedList.Mvc;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices.ComTypes;
 using AppDataPribadi;
+using System.Web.DynamicData;
 
 namespace AppDataPribadi.Controllers
 {
@@ -26,11 +27,18 @@ namespace AppDataPribadi.Controllers
         {
             var listofData = _context.DataDBs.ToList();
             return View(listofData);
-        }       
+        }
 
-        //public JsonResult isNikexist(string NIK)
+        //[HttpGet]
+        //public async Task<ActionResult> Index2(string dataM)
         //{
-        //    return Json(data: !DataDB.Any(x => x.NIK == NIK));
+        //    var dataLaki = from x in _context.DataDBs select x;
+        //    if (!String.IsNullOrEmpty(dataM))
+        //    {
+        //        dataLaki = dataLaki.Where(x => x.Jenis_Kelamin.Contains(dataM));
+        //    }
+                
+        //    return View(await dataLaki.AsNoTracking().ToListAsync());
         //}
 
         [HttpGet]
@@ -76,24 +84,7 @@ namespace AppDataPribadi.Controllers
             return RedirectToAction("Index");
 
         }
-
-        //[AllowAnonymous]
-        //public JsonResult IsNIKExist(String NIKnya)
-        //{
-        //    System.Threading.Thread.Sleep(200);
-        //    var SearchData = _context.DataDBs.Where(x => x.NIK == NIKnya).SingleOrDefault();
-
-        //    if (SearchData != null)
-        //    {
-        //        return Json(1);
-        //    }
-        //    else
-        //    {
-        //        return Json(0);
-        //    }
-
-        //    return Json(!_context.DataDBs.Any(model => model.NIK == NIKnya), JsonRequestBehavior.AllowGet);
-        //}
+       
         public ActionResult Detail(string id)
         {
             var data = _context.DataDBs.Where(x => x.NIK == id).FirstOrDefault();

@@ -1,7 +1,7 @@
 ﻿@model AppDataPribadi.DataDB
 
 @{
-    ViewBag.Title = "I2S Test - Arief Ageng Susilo";
+    ViewBag.Title = "Create - Arief Ageng Susilo";
 }
 
 @if (TempData["AlertMessage"] != null)
@@ -20,17 +20,8 @@
     <script src="~/Scripts/jquery-ui-1.13.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.datepicker').datepicker({
-                dateFormat: 'dd-M-yy',
-                changeMonth: true,
-                changeYear: true,
-                yearRange: '-60:+60'
-
-            });
-        });
-    </script>
+    <script type="text/javascript"></script>
+    <script src="~/Scripts/Custom/DatePicker.js"></script>
 }
 
 <h2>Aplikasi Data Pribadi</h2>
