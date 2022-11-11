@@ -27,7 +27,7 @@ namespace AppDataPribadi.Controllers
         {
             var listofData = _context.DataDBs.ToList();
             return View(listofData);
-        }
+        }        
 
         //[HttpGet]
         //public async Task<ActionResult> Index2(string dataM)

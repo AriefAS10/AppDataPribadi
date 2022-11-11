@@ -39,10 +39,19 @@ namespace AppDataPribadi
         public DateTime Tanggal_Lahir { get; set; }
 
         public string Alamat { get; set; }
-        [Display(Name = "Negara")]
 
+        [Display(Name = "Negara")]
         public int CountryId { get; set; }
     
         public virtual Country Country { get; set; }
+
+        public int Umur { get
+            {
+                DateTime now = DateTime.Today;
+                int age = now.Year - Tanggal_Lahir.Year;
+                if (Tanggal_Lahir > now.AddYears(-age)) age--;
+                return age;
+            }
+        }
     }
 }
