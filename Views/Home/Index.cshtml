@@ -18,15 +18,24 @@
 <h2>Daftar Data Pribadi</h2>
 <hr />
 
-<div style="margin:auto; width:fit-content">
-    <form method="get" asp-action="Index" style="margin: 0 0 1em;">    
+@*<div style="margin:auto; width:fit-content">
+        <form method="get" asp-action="Index" style="margin: 0 0 1em;">
+            @Html.ActionLink("Tambah Data Baru", "Create", null, new { @class = "btn btn-primary" })
+        </form>
+    </div>*@
+<form method="get" asp-action="Index" style="margin: 0 0 1em;">
+    <div class="row">
+    <div class="col-sm-12">
         @Html.ActionLink("Tambah Data Baru", "Create", null, new { @class = "btn btn-primary" })
-        <input type="search" placeholder="Cari data berdasarkan NIK atau Nama..."
-               value="@ViewData["Getdatadetails"]" name="dataSearch" style="width: 500px;" />
-        <input type="submit" value="Cari" class="btn btn-success" style="width: 170px" /> |
-        @Html.ActionLink("Tampilkan Semua Data", "Index")    
-</form>
+        <div class="form-inline pull-right">
+            <input class="form-control" type="search" placeholder="Cari data berdasarkan NIK atau Nama..."
+                   value="@ViewData["Getdatadetails"]" name="dataSearch" style="width: 500px;" />
+            <input type="submit" value="Cari" class="btn btn-success" @*style="width: 170px"*@ /> |
+            @Html.ActionLink("Tampilkan Semua Data", "Index")
+        </div>
+    </div>
 </div>
+</form>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -43,6 +52,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Jenis_Kelamin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Umur)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Tanggal_Lahir)
@@ -75,6 +87,9 @@
                         @Html.DisplayFor(modelItem => item.Jenis_Kelamin)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Umur)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Tanggal_Lahir)
                     </td>
                     <td>
@@ -85,12 +100,12 @@
                     </td>
                     <td>
                         <div>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.NIK }, new { @class="btn btn-primary btn-xs"})
-                        
-                            @Html.ActionLink("Details", "Detail", new { id = item.NIK}, new { @class = "btn btn-success btn-xs" })
-                        
-                            @Html.ActionLink("Delete", "Delete", new { id = item.NIK }, new { @class="btn btn-danger btn-xs", onclick = "return confirm('Apakah kamu yakin ingin menghapus data " + item.Nama_Lengkap + " ')" })
-                        </div>                        
+                            @Html.ActionLink("Edit", "Edit", new { id = item.NIK }, new { @class = "btn btn-primary btn-xs" })
+
+                            @Html.ActionLink("Details", "Detail", new { id = item.NIK }, new { @class = "btn btn-success btn-xs" })
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.NIK }, new { @class = "btn btn-danger btn-xs", onclick = "return confirm('Apakah kamu yakin ingin menghapus data " + item.Nama_Lengkap + " ')" })
+                        </div>
                     </td>
                 </tr>
             }
